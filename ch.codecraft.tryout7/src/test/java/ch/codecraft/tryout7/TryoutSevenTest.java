@@ -1,13 +1,13 @@
 package ch.codecraft.tryout7;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  * @author chris
@@ -21,7 +21,7 @@ public class TryoutSevenTest {
 		System.setOut(new PrintStream(overridenSystemOut));
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expectedExceptions = NullPointerException.class)
 	public void testMainNoArgs() {
 		assertNotNull(overridenSystemOut);
 		TryoutSeven.main(null);
@@ -35,7 +35,7 @@ public class TryoutSevenTest {
 		assertEquals("Hello, Java 7\n", overridenSystemOut.toString());
 	}
 
-	@Test(expected=RuntimeException.class)
+	@Test(expectedExceptions=RuntimeException.class)
 	public void testMainKo() {
 		assertNotNull(overridenSystemOut);
 		String[] args = { "key" };
